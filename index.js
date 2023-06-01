@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const morgan = require("morgan");
 const router = require("./routes/route.js");
@@ -14,9 +15,7 @@ app.use(multer().any());
 
 mongoose.set("strictQuery", true);
 mongoose
-  .connect(
-    "",
-  )
+  .connect(process.env.MONGO_URL)
   .then(() => console.log("MongoDb is connected 💯✅"))
   .catch((err) => console.log(err));
 
